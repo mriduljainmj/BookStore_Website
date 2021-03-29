@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (errorMessage) { %>
+            <div>
+                <%= errorMessage %>
+            </div>
+            <% } %>
+        <form class="login-form" action="/signup" method="POST" novalidate>
+            <div class="form-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= oldInput.name %>"><br>
+
+                <label for="email" >E-mail</label>
+                <input type="email" name="email" id="email" value="<%= oldInput.email %>"><br>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="<%= oldInput.password %>"><br>
+
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" name="confirmpassword" id="confirmpassword" value="<%= oldInput.confirmpassword %>"><br>
+                <div>
+            <input type="hidden" name ="_csrf" value ="<%=csrfToken%>">
+            <button class="btn" type="submit">Signup</button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
